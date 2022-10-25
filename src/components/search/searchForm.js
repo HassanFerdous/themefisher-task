@@ -9,7 +9,8 @@ function SearchForm() {
 
 	//send search string into store
 	const handleInputChange = (e) => {
-		dispatch(searched(e.target.value));
+		let value = e.target.value.toLowerCase();
+		dispatch(searched(value));
 	};
 
 	return (
