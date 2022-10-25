@@ -1,0 +1,17 @@
+
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 16px 10px;
+}
+
+.card {
+    &__img {
+        display: inherit;
+        line-height: 0;
+
+		img {
+			width: 100%;
+		}
+    }
+}

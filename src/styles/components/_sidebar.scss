@@ -1,0 +1,42 @@
+.sidebar {
+    &__panel {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        &-head {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__subtitle {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #5f697d;
+        letter-spacing: 0.2px;
+        font-weight: 600;
+    }
+
+    &__toggleBtn {
+        @media screen and(min-width: 992px) {
+            display: none;
+        }
+    }
+}
+
+//checkbox
+.checkbox {
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    &__label {
+        font-size: 14px;
+        text-transform: capitalize;
+    }
+}

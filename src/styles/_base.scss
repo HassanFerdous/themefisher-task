@@ -1,0 +1,19 @@
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(auto, 250px) 1fr;
+    grid-gap: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.filter ~ .card-grid {
+	margin-top: 20px;
+}
