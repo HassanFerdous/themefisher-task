@@ -64,7 +64,7 @@ function Sidebar() {
 	const handleChange = (e, filter) => {
 		let self = e.currentTarget;
 		if (self.checked) {
-			dispatch(addFilter({ ...filter, value: filter?.value?.toLowerCase() }));
+			dispatch(addFilter({ ...filter, value: filter?.value.toLowerCase() }));
 			return;
 		}
 		dispatch(removeFilter({ id: filter?.id }));
@@ -88,7 +88,7 @@ function Sidebar() {
 										className='checkbox__input'
 										type='checkbox'
 										id={id}
-										onChange={(e) => handleChange(e, { value: color, id: id })}
+										onChange={(e) => handleChange(e, { filterType: 'color', value: color, id: id })}
 									/>
 									<label className='checkbox__label' htmlFor={id}>
 										{color}
@@ -114,7 +114,7 @@ function Sidebar() {
 										className='checkbox__input'
 										type='checkbox'
 										id={id}
-										onChange={(e) => handleChange(e, { value: city, id: id })}
+										onChange={(e) => handleChange(e, { filterType: 'city', value: city, id: id })}
 									/>
 									<label className='checkbox__label' htmlFor={id}>
 										{city}
@@ -140,7 +140,7 @@ function Sidebar() {
 										className='checkbox__input'
 										type='checkbox'
 										id={id}
-										onChange={(e) => handleChange(e, { value: car, id: id })}
+										onChange={(e) => handleChange(e, { filterType: 'car', value: car, id: id })}
 									/>
 									<label className='checkbox__label' htmlFor={id}>
 										{car}
