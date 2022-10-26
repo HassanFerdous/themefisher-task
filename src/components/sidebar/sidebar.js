@@ -74,13 +74,7 @@ function Sidebar() {
 		dispatch(removeFilter({ id: filter?.id }));
 	};
 
-	// useEffect(() => {
-	// 	let media = window.matchMedia('(max-width: 991.98px)');
-	// 	if(media.matches) {
-	// 		setShowFilter(false)
-	// 	}
-	// }, []);
-
+	// toggle filter
 	const toggleFilters = () => {
 		setShowFilter(!showFilter);
 	};

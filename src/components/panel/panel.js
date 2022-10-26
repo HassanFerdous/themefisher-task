@@ -4,6 +4,8 @@ import { Collapse } from 'react-collapse';
 
 function Panel({ children, head, open }) {
 	const [isOpen, setIsOpen] = useState(open || false);
+
+	//toggle collapse
 	const toggleFilterBody = () => {
 		setIsOpen(!isOpen);
 	};
@@ -22,29 +24,3 @@ function Panel({ children, head, open }) {
 }
 
 export default Panel;
-
-/* <div className='sidebar__panel'>
-					<div className='sidebar__panel-head'>
-						<span className='sidebar__subtitle'>Cars</span>
-					</div>
-					<div className='sidebar__panel-body'>
-						<ul>
-							{cars.map((car, index) => {
-								let id = uuidv4();
-								return (
-									<li className='checkbox' key={id}>
-										<input
-											className='checkbox__input'
-											type='checkbox'
-											id={id}
-											onChange={(e) => handleChange(e, { filterType: 'cars', value: car, id: id })}
-										/>
-										<label className='checkbox__label' htmlFor={id}>
-											{car}
-										</label>
-									</li>
-								);
-							})}
-						</ul>
-					</div>
-				</div> */

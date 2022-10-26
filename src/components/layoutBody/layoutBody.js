@@ -17,12 +17,6 @@ function LayoutBody() {
 		isError,
 	} = useGetCarsQuery({ params, search }, { refetchOnMountOrArgChange: true });
 
-	//filtered content
-	let content;
-	if (isLoading) content = 'loading';
-	if (isError) content = 'something went wrong!!';
-	if (!isError && isSuccess) content = cars.map((car) => <Card key={car.id} car={car} />);
-
 	//sidebar filter
 	useEffect(() => {
 		let filterQuery = tags.map((tag) => ({ [tag.filterType]: tag.value }));
@@ -47,6 +41,12 @@ function LayoutBody() {
 		});
 		setQuery(paramsArr);
 	}, []);
+
+	//filtered content
+	let content;
+	if (isLoading) content = 'loading';
+	if (isError) content = 'something went wrong!!';
+	if (!isError && isSuccess) content = cars.map((car) => <Card key={car.id} car={car} />);
 
 	return (
 		<div className='layout__body'>
