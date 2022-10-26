@@ -2,6 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '../../features/filter/filterSlice';
 import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
+import Panel from '../panel/panel';
+import filterIcon from '../../assets/filter.png';
 
 const colors = [
 	'Teal',
@@ -59,6 +62,7 @@ const cars = [
 
 function Sidebar() {
 	const dispatch = useDispatch();
+	const [showFilter, setShowFilter] = useState(false);
 
 	//toggle filter on change
 	const handleChange = (e, filter) => {
@@ -70,15 +74,26 @@ function Sidebar() {
 		dispatch(removeFilter({ id: filter?.id }));
 	};
 
+	// useEffect(() => {
+	// 	let media = window.matchMedia('(max-width: 991.98px)');
+	// 	if(media.matches) {
+	// 		setShowFilter(false)
+	// 	}
+	// }, []);
+
+	const toggleFilters = () => {
+		setShowFilter(!showFilter);
+	};
+
 	return (
 		<div className='sidebar'>
-			<button className='sidebar__toggleBtn'></button>
-			{/* filter by color */}
-			<div className='sidebar__panel'>
-				<div className='sidebar__panel-head'>
-					<span className='sidebar__subtitle'>Colors</span>
-				</div>
-				<div className='sidebar__panel-body'>
+			<button className='sidebar__toggleBtn' onClick={toggleFilters}>
+				Filter
+				<img src={filterIcon} alt='' />
+			</button>
+			<div className={`sidebar__panels ${showFilter ? 'show' : ''}`}>
+				{/* filter by color */}
+				<Panel head='colors' open={true}>
 					<ul>
 						{colors.map((color, index) => {
 							let id = uuidv4();
@@ -97,14 +112,9 @@ function Sidebar() {
 							);
 						})}
 					</ul>
-				</div>
-			</div>
-			{/* filter by city */}
-			<div className='sidebar__panel'>
-				<div className='sidebar__panel-head'>
-					<span className='sidebar__subtitle'>City</span>
-				</div>
-				<div className='sidebar__panel-body'>
+				</Panel>
+				{/* filter by city */}
+				<Panel head='Cities'>
 					<ul>
 						{cities.map((city, index) => {
 							let id = uuidv4();
@@ -123,14 +133,9 @@ function Sidebar() {
 							);
 						})}
 					</ul>
-				</div>
-			</div>
-			{/* filter by car */}
-			<div className='sidebar__panel'>
-				<div className='sidebar__panel-head'>
-					<span className='sidebar__subtitle'>Cars</span>
-				</div>
-				<div className='sidebar__panel-body'>
+				</Panel>
+				{/* filter by car */}
+				<Panel head='cars'>
 					<ul>
 						{cars.map((car, index) => {
 							let id = uuidv4();
@@ -149,7 +154,7 @@ function Sidebar() {
 							);
 						})}
 					</ul>
-				</div>
+				</Panel>
 			</div>
 		</div>
 	);

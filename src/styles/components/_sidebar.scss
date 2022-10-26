@@ -1,11 +1,73 @@
 .sidebar {
+    position: relative;
+
+    @include media-down(991.98px) {
+        margin-bottom: 16px;
+    }
+
+    &__panels {
+        @include media-down(991.98px) {
+            display: none;
+            position: absolute;
+            top: 22px;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            z-index: 10;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            border-top: 1px solid;
+            margin-top: 10px;
+
+        }
+
+        &.show {
+            display: block;
+        }
+    }
+
     &__panel {
         &:not(:last-child) {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+
+            @media screen and(min-width: 992px) {
+                margin-bottom: 20px;
+            }
         }
 
         &-head {
-            margin-bottom: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        &-icon {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 14px;
+            height: 1px;
+            margin-top: -1px;
+            display: block;
+
+            &::after,
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                width: 100%;
+                height: 100%;
+                background-color: #000;
+                transition: transform .5s ease;
+            }
+
+            &::after {
+                transform: rotate(90deg);
+            }
+        }
+
+        &--open &-icon::after {
+            transform: rotate(0);
         }
     }
 
@@ -18,8 +80,24 @@
     }
 
     &__toggleBtn {
-        @media screen and(min-width: 992px) {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 30px;
+        border: 0;
+        padding: 0;
+        background-color: transparent;
+        font-weight: 600;
+        text-transform: uppercase;
+
+        @include media-up(992px) {
             display: none;
+        }
+
+        img {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
         }
     }
 }

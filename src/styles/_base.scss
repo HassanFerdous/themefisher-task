@@ -7,13 +7,22 @@
 
 
 .layout {
-    display: grid;
-    grid-template-columns: minmax(auto, 250px) 1fr;
-    grid-gap: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
+
+     @include media-up(992px) {
+        display: grid;
+        grid-template-columns: minmax(auto, 250px) 1fr;
+        grid-gap: 30px;
+    }
 }
 
-.filter ~ .card-grid {
-	margin-top: 20px;
+.ReactCollapse--collapse {
+    transition: height 500ms;
 }
+
+// .filter ~ .card-grid {
+// 	margin-top: 20px;
+
+   
+// }
