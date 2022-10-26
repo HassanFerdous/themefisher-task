@@ -1,11 +1,12 @@
 import React from 'react';
+import carImg from '../../assets/car.jpg';
 
 function Card({ car }) {
-	let { name, color, cars } = car;
+	let { name, color, cars, city } = car;
 	return (
 		<div className='card'>
 			<picture className='card__img'>
-				<img src='https://source.unsplash.com/featured/300x201' alt='' />
+				<img src={carImg} alt='' />
 			</picture>
 			<div className='card__caption'>
 				<div className='card__row'>
@@ -19,6 +20,10 @@ function Card({ car }) {
 					<strong>Cars:</strong>
 					{cars.join(',')}
 				</p>
+				<span className='card__color'>
+					<strong>City:</strong>
+					{city.join(',')}
+				</span>
 			</div>
 		</div>
 	);

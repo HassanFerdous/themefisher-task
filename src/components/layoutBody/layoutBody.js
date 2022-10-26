@@ -7,15 +7,31 @@ import Card from '../card/card';
 import Filter from './filter';
 
 function LayoutBody() {
-	const { tags } = useSelector((state) => state.filter);
+	const { tags, search } = useSelector((state) => state.filter);
 	const [params, setParams] = useState([]);
-	let { data: cars, isLoading, isSuccess, isError } = useGetCarsQuery(params, { refetchOnMountOrArgChange: true });
+	let [query, setQuery] = useState([]);
+	let {
+		data: cars,
+		isLoading,
+		isSuccess,
+		isError,
+	} = useGetCarsQuery({ params, search }, { refetchOnMountOrArgChange: true });
 
 	//filtered content
 	let content;
 	if (isLoading) content = 'loading';
 	if (isError) content = 'something went wrong!!';
 	if (!isError && isSuccess) content = cars.map((car) => <Card key={car.id} car={car} />);
+
+	//sidebar filter
+	useEffect(() => {
+		let filterQuery = tags.map((tag) => ({ [tag.filterType]: tag.value }));
+		if (!filterQuery.length) {
+			setParams(query);
+			return;
+		}
+		setParams(filterQuery);
+	}, [tags, query]);
 
 	//create params array from uri
 	useEffect(() => {
@@ -29,16 +45,8 @@ function LayoutBody() {
 
 			return { [key]: value };
 		});
-		setParams(paramsArr);
+		setQuery(paramsArr);
 	}, []);
-
-	//sidebar filter
-	useEffect(() => {
-		let filterQuery = tags.map((tag) => ({ [tag.filterType]: tag.value }));
-		if (filterQuery) {
-			setParams(filterQuery);
-		}
-	}, [tags]);
 
 	return (
 		<div className='layout__body'>
