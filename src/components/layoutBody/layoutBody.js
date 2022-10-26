@@ -9,6 +9,13 @@ import Filter from './filter';
 function LayoutBody() {
 	const { tags } = useSelector((state) => state.filter);
 	const [params, setParams] = useState([]);
+	let { data: cars, isLoading, isSuccess, isError } = useGetCarsQuery(params, { refetchOnMountOrArgChange: true });
+
+	//filtered content
+	let content;
+	if (isLoading) content = 'loading';
+	if (isError) content = 'something went wrong!!';
+	if (!isError && isSuccess) content = cars.map((car) => <Card key={car.id} car={car} />);
 
 	//create params array from uri
 	useEffect(() => {
@@ -25,23 +32,19 @@ function LayoutBody() {
 		setParams(paramsArr);
 	}, []);
 
-	let { data: cars, isLoading, isSuccess, isError } = useGetCarsQuery(params);
+	//sidebar filter
+	useEffect(() => {
+		let filterQuery = tags.map((tag) => ({ [tag.filterType]: tag.value }));
+		if (filterQuery) {
+			setParams(filterQuery);
+		}
+	}, [tags]);
 
 	return (
 		<div className='layout__body'>
 			{tags.length >= 1 && <Filter tags={tags} />}
 
-			<div className='card-grid'>
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-			</div>
+			<div className='card-grid'>{content}</div>
 		</div>
 	);
 }

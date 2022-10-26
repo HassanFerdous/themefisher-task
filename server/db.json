@@ -56,13 +56,7 @@
           "cars": ["Mercury"],
           "id": 8
         },
-        {
-          "name": "Sportage",
-          "color": ["Maroon"],
-          "city": ["Xiaozhen"],
-          "cars": ["Kia"],
-          "id": 1
-        },
+        
         {
           "name": "Ram 1500",
           "color": ["Puce"],
@@ -98,6 +92,13 @@
           "city": ["Zongjia"],
           "cars": ["Ford"],
           "id": 19
+        },
+        {
+          "name": "Sportage",
+          "color": ["Maroon"],
+          "city": ["Xiaozhen"],
+          "cars": ["Kia"],
+          "id": 20
         },
         {
           "name": "Yukon XL 2500",

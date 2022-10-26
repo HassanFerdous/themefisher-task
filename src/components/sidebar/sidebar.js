@@ -140,7 +140,7 @@ function Sidebar() {
 										className='checkbox__input'
 										type='checkbox'
 										id={id}
-										onChange={(e) => handleChange(e, { filterType: 'car', value: car, id: id })}
+										onChange={(e) => handleChange(e, { filterType: 'cars', value: car, id: id })}
 									/>
 									<label className='checkbox__label' htmlFor={id}>
 										{car}
