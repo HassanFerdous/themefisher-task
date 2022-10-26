@@ -1,0 +1,144 @@
+{
+    "cars": [
+        {
+          "name": "R32",
+          "color": ["Teal", "Blue"],
+          "city": ["Malata", "Acas"],
+          "cars": ["Volkswagen", "Dodge"],
+          "id": 1
+        },
+        {
+          "name": "Ram Van B350",
+          "color": ["Pink"],
+          "city": ["Manolás"],
+          "cars": ["Dodge", "BMW"],
+          "id": 2
+        },
+        {
+          "name": "98",
+          "color": ["Goldenrod"],
+          "city": ["Pirapora"],
+          "cars": ["Oldsmobile", "Jeep"],
+          "id": 3
+        },
+        {
+          "name": "M5",
+          "color": ["Maroon", "Red"],
+          "city": ["Acas"],
+          "cars": ["BMW"],
+          "id": 4
+        },
+        {
+          "name": "Tacoma",
+          "color": ["Fuscia", "Blue"],
+          "city": ["Umanggudang"],
+          "cars": ["Toyota"],
+          "id": 5
+        },
+        {
+          "name": "GX",
+          "color": ["Yellow"],
+          "city": ["Junliangcheng"],
+          "cars": ["Lexus"],
+          "id": 6
+        },
+        {
+          "name": "Esprit",
+          "color": ["Orange", "Blue"],
+          "city": ["Mzuzu"],
+          "cars": ["Lotus"],
+          "id": 7
+        },
+        {
+          "name": "Marquis",
+          "color": ["Khaki"],
+          "city": ["Mingguang"],
+          "cars": ["Mercury"],
+          "id": 8
+        },
+        {
+          "name": "Sportage",
+          "color": ["Maroon"],
+          "city": ["Xiaozhen"],
+          "cars": ["Kia"],
+          "id": 1
+        },
+        {
+          "name": "Ram 1500",
+          "color": ["Puce"],
+          "city": ["Xinghe"],
+          "cars": ["Dodge"],
+          "id": 9
+        },
+        {
+          "name": "Mariner",
+          "color": ["Turquoise"],
+          "city": ["Osiek"],
+          "cars": ["Mercury"],
+          "id": 10
+        },
+        {
+          "name": "Corvette",
+          "color": ["Orange"],
+          "city": ["Repušnica"],
+          "cars": ["Chevrolet"],
+          "id": 11
+        },
+        {
+          "name": "Fortwo",
+          "color": ["Yellow"],
+          "city": ["Hannover"],
+          "cars": ["Smart"],
+          "id": 12
+        },
+        {
+          "name": "Cabriolet",
+          "color": ["Blue"],
+          "city": ["Pepe"],
+          "cars": ["Volkswagen"],
+          "id": 13
+        },
+        {
+          "name": "Aspire",
+          "color": ["Maroon"],
+          "city": ["Zongjia"],
+          "cars": ["Ford"],
+          "id": 1
+        },
+        {
+          "name": "Yukon XL 2500",
+          "color": ["Violet"],
+          "city": ["Hovorany"],
+          "cars": ["GMC"],
+          "id": 14
+        },
+        {
+          "name": "Corvette",
+          "color": ["Teal"],
+          "city": ["Hiseti"],
+          "cars": ["Chevrolet"],
+          "id": 1
+        },
+        {
+          "name": "ES",
+          "color": ["Fuscia"],
+          "city": ["Guadalupe"],
+          "cars": ["Lexus", "Kia"],
+          "id": 15
+        },
+        {
+          "name": "Patriot",
+          "color": ["Maroon"],
+          "city": ["Tambulig"],
+          "cars": ["Jeep"],
+          "id": 16
+        },
+        {
+          "name": "4Runner",
+          "color": ["Maroon"],
+          "city": ["Komiža"],
+          "cars": ["Toyota"],
+          "id": 17
+        }
+      ]
+}
