@@ -10,7 +10,6 @@ function App() {
 	useEffect(() => {
 		const urlSearchParams = new URLSearchParams(window.location.search);
 		let queryString = urlSearchParams.toString();
-		console.log(queryString);
 		if (!queryString.trim().length) return;
 		let paramsArr = queryString.split('&').map((str) => {
 			let param = str.split('=');

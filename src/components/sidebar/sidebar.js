@@ -235,7 +235,6 @@ function Sidebar({ query }) {
 	useEffect(() => {
 		query.forEach((param) => {
 			let { filterType, value } = param;
-			console.log(filterType, value);
 			if (filterType === 'name') return dispatch(addFilter({ ...param, id: uuidv4() }));
 			let selectedOption = findSelectedOption(filterType, value);
 			if (!selectedOption) return;
