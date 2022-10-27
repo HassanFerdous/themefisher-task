@@ -208,24 +208,21 @@ const options = {
 function Sidebar({ query }) {
 	const dispatch = useDispatch();
 	const [showFilter, setShowFilter] = useState(false);
+	const { appendParam, removeParam } = useHistory();
 
 	//toggle filter on change
 	const handleChange = (e, filter) => {
 		let self = e.currentTarget;
-		const urlSearchParams = new URLSearchParams(window.location.search);
 		if (self.checked) {
 			dispatch(addFilter({ ...filter, value: filter?.value.toLowerCase() }));
 
 			//append query param
-			urlSearchParams.append(filter?.filterType, filter?.value);
-			window.history.pushState(null, null, '?' + urlSearchParams.toString());
+			appendParam(filter?.filterType, filter?.value);
 			return;
 		}
 
 		//remove query param
-		let regex = new RegExp(`&?${filter.filterType}=${filter.value}`);
-		let newUrl = urlSearchParams.toString().replace(regex, '');
-		window.history.pushState(null, null, '?' + newUrl);
+		removeParam(filter?.filterType, filter?.value);
 		dispatch(removeFilter({ id: filter?.id }));
 	};
 
@@ -238,6 +235,7 @@ function Sidebar({ query }) {
 	useEffect(() => {
 		query.forEach((param) => {
 			let { filterType, value } = param;
+			console.log(filterType, value);
 			if (filterType === 'name') return dispatch(addFilter({ ...param, id: uuidv4() }));
 			let selectedOption = findSelectedOption(filterType, value);
 			if (!selectedOption) return;

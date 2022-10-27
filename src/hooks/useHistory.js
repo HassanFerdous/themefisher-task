@@ -1,13 +1,13 @@
 const useHistory = () => {
-	const urlSearchParams = new URLSearchParams(window.location.search);
-
 	const appendParam = (key, value) => {
+		const urlSearchParams = new URLSearchParams(window.location.search);
 		urlSearchParams.append(key, value);
 		updateHistory(urlSearchParams.toString());
 	};
 
 	const removeParam = (key, value) => {
-		let regex = new RegExp(`&?${key}=${value}`);
+		const urlSearchParams = new URLSearchParams(window.location.search);
+		let regex = new RegExp(`&?${key}=${encodeURIComponent(value)}`, 'i');
 		let newUrl = urlSearchParams.toString().replace(regex, '');
 		updateHistory(newUrl);
 	};
@@ -16,7 +16,7 @@ const useHistory = () => {
 		window.history.pushState(null, null, '?' + url);
 	}
 
-	return [appendParam, removeParam];
+	return { appendParam, removeParam, updateHistory };
 };
 
 export default useHistory;

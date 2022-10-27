@@ -10,13 +10,14 @@ function App() {
 	useEffect(() => {
 		const urlSearchParams = new URLSearchParams(window.location.search);
 		let queryString = urlSearchParams.toString();
+		console.log(queryString);
 		if (!queryString.trim().length) return;
 		let paramsArr = queryString.split('&').map((str) => {
 			let param = str.split('=');
 			let key = param[0];
 			let value = param[1];
 
-			return { filterType: key, value: value };
+			return { filterType: key, value: decodeURIComponent(value) };
 		});
 		setQuery(paramsArr);
 	}, []);

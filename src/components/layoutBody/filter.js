@@ -2,14 +2,17 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import closeIcon from '../../assets/close.svg';
 import { clearFilter, clearSearch, removeFilter } from '../../features/filter/filterSlice';
+import useHistory from '../../hooks/useHistory';
 
 function Filter({ tags }) {
 	const dispatch = useDispatch();
-
+	const { removeParam, updateHistory } = useHistory();
 	//remove filter on click
-	const handleClick = (id) => {
+	const handleClick = (tag) => {
+		let { id, value, filterType } = tag;
 		let input = document.getElementById(id);
 		if (input) input.checked = false;
+		removeParam(filterType, value);
 		dispatch(removeFilter({ id }));
 	};
 
@@ -19,6 +22,7 @@ function Filter({ tags }) {
 		document.querySelector('.search__input').value = '';
 		dispatch(clearFilter());
 		dispatch(clearSearch());
+		updateHistory('');
 	};
 
 	return (
@@ -26,7 +30,7 @@ function Filter({ tags }) {
 			<ul className='tags'>
 				{tags.map((tag) => {
 					return (
-						<li className='tag' key={tag.id} onClick={() => handleClick(tag.id)}>
+						<li className='tag' key={tag.id} onClick={() => handleClick(tag)}>
 							{tag.value}
 							<img className='tag__closIcon' src={closeIcon} alt='' />
 						</li>
