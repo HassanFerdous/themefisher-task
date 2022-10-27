@@ -9,7 +9,7 @@ import Filter from './filter';
 function LayoutBody() {
 	const { tags, search } = useSelector((state) => state.filter);
 	const [params, setParams] = useState([]);
-	let [query, setQuery] = useState([]);
+
 	let {
 		data: cars,
 		isLoading,
@@ -20,27 +20,8 @@ function LayoutBody() {
 	//sidebar filter
 	useEffect(() => {
 		let filterQuery = tags.map((tag) => ({ [tag.filterType]: tag.value }));
-		if (!filterQuery.length) {
-			setParams(query);
-			return;
-		}
 		setParams(filterQuery);
-	}, [tags, query]);
-
-	//create params array from uri
-	useEffect(() => {
-		const urlSearchParams = new URLSearchParams(window.location.search);
-		let queryString = urlSearchParams.toString();
-		if (!queryString.trim().length) return;
-		let paramsArr = queryString.split('&').map((str) => {
-			let param = str.split('=');
-			let key = param[0];
-			let value = param[1];
-
-			return { [key]: value };
-		});
-		setQuery(paramsArr);
-	}, []);
+	}, [tags]);
 
 	//filtered content
 	let content;

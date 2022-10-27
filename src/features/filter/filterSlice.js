@@ -33,4 +33,4 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { addFilter, removeFilter, clearFilter, searched } = filterSlice.actions;
+export const { addFilter, removeFilter, clearFilter, searched, clearSearch } = filterSlice.actions;
