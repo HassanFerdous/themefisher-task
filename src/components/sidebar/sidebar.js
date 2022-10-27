@@ -6,6 +6,7 @@ import Panel from '../panel/panel';
 import filterIcon from '../../assets/filter.png';
 import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import useHistory from '../../hooks/useHistory';
 
 const options = {
 	color: [
@@ -211,10 +212,20 @@ function Sidebar({ query }) {
 	//toggle filter on change
 	const handleChange = (e, filter) => {
 		let self = e.currentTarget;
+		const urlSearchParams = new URLSearchParams(window.location.search);
 		if (self.checked) {
 			dispatch(addFilter({ ...filter, value: filter?.value.toLowerCase() }));
+
+			//append query param
+			urlSearchParams.append(filter?.filterType, filter?.value);
+			window.history.pushState(null, null, '?' + urlSearchParams.toString());
 			return;
 		}
+
+		//remove query param
+		let regex = new RegExp(`&?${filter.filterType}=${filter.value}`);
+		let newUrl = urlSearchParams.toString().replace(regex, '');
+		window.history.pushState(null, null, '?' + newUrl);
 		dispatch(removeFilter({ id: filter?.id }));
 	};
 
