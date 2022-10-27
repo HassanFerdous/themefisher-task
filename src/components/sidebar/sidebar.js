@@ -238,7 +238,7 @@ function Sidebar({ query }) {
 
 	//find selected option
 	function findSelectedOption(filterType, value) {
-		let selectedOption = options[filterType].find((option) => option.value.toLowerCase() === value);
+		let selectedOption = options[filterType].find((option) => option.value.toLowerCase() === value.toLowerCase());
 		return selectedOption;
 	}
 

@@ -28,6 +28,7 @@ function LayoutBody() {
 	if (isLoading) content = 'loading';
 	if (isError) content = 'something went wrong!!';
 	if (!isError && isSuccess) content = cars.map((car) => <Card key={car.id} car={car} />);
+	if (!isLoading && !isError && cars.length <= 0) content = 'not found!!';
 
 	return (
 		<div className='layout__body'>
