@@ -5,10 +5,11 @@ const apiSlice = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
 	endpoints: (builder) => ({
 		getCars: builder.query({
-			query: ({ params, search }) => {
+			query: (params) => {
+				let { queryParams, search } = params || {};
 				let queryString = '';
-				if (Array.isArray(params) && params.length) {
-					let str = params
+				if (Array.isArray(queryParams) && queryParams.length) {
+					let str = queryParams
 						.map((param) => {
 							let key = Object.keys(param)[0];
 							if (key !== 'name') return `${key}_like=${param[key]}`;
@@ -17,7 +18,7 @@ const apiSlice = createApi({
 						.join('&');
 					queryString += str;
 				}
-				if (search.trim().length) queryString += `&q=${search}`;
+				if (search?.trim().length) queryString += `&q=${search}`;
 
 				return {
 					url: `/cars?${queryString}`,

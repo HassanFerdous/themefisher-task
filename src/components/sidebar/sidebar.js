@@ -7,6 +7,7 @@ import filterIcon from '../../assets/filter.png';
 import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import useHistory from '../../hooks/useHistory';
+import { useGetCarsQuery } from '../../features/api/apiSlice';
 
 const options = {
 	color: [
@@ -209,6 +210,20 @@ function Sidebar({ query }) {
 	const dispatch = useDispatch();
 	const [showFilter, setShowFilter] = useState(false);
 	const { appendParam, removeParam } = useHistory();
+
+	let { data: cars } = useGetCarsQuery();
+
+	//options from cars data
+	let optionsFromServer = cars?.reduce(
+		(acc, curr) => {
+			return {
+				color: [...new Set([...acc.color, ...curr.color])],
+				city: [...new Set([...acc.city, ...curr.city])],
+				cars: [...new Set([...acc.cars, ...curr.city])],
+			};
+		},
+		{ color: [], city: [], cars: [] }
+	);
 
 	//toggle filter on change
 	const handleChange = (e, filter) => {
