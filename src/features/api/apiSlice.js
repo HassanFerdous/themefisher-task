@@ -16,6 +16,7 @@ const apiSlice = createApi({
 							return `${key}=${param[key]}`;
 						})
 						.join('&');
+
 					queryString += str;
 				}
 				if (search?.trim().length) queryString += `&q=${search}`;

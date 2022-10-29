@@ -15,7 +15,7 @@ function LayoutBody() {
 		isLoading,
 		isSuccess,
 		isError,
-	} = useGetCarsQuery({ params, search }, { refetchOnMountOrArgChange: true });
+	} = useGetCarsQuery({ queryParams: params, search }, { refetchOnMountOrArgChange: true });
 
 	//sidebar filter
 	useEffect(() => {
